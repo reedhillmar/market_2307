@@ -20,4 +20,14 @@ describe Market do
       expect(@market.vendors.empty?).to be true
     end
   end
+
+  describe "#add_vendor" do
+    it "can add vendors to the market" do
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+
+      expect(@market.vendors). to eq([@vendor1, @vendor2, @vendor3])
+    end 
+  end
 end

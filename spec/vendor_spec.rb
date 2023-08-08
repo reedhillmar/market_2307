@@ -15,4 +15,10 @@ describe Vendor do
       expect(@vendor.inventory.empty?).to be true
     end
   end
+
+  describe "#check_stock" do
+    it "can check the stock of an item" do
+      expect(@vendor.check_stock(item1)).to be 0
+    end
+  end
 end

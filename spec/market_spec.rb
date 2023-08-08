@@ -28,6 +28,12 @@ describe Market do
     it "has a date that defaults to the date it is initialized" do
       expect(@market.date).to eq ("08/08/2023")
     end
+
+    xit "can have a different date" do
+      allow(Date.today).to receive(:strftime).and_return("24/02/2023")
+
+      expect(@market.date).to eq("24/02/2023")
+    end
   end
 
   describe "#add_vendor" do

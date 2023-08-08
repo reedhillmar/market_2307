@@ -86,7 +86,7 @@ describe Market do
 
     describe "#sorted_item_list" do
       it "can return a list of items in stock sorted alphabetically by name" do
-        expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peach", "Tomato"])
+        expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
       end
     end
   end

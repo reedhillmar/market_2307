@@ -17,6 +17,24 @@ class Market
   end
 
   def vendors_that_sell(item)
+    # require 'pry';binding.pry
     @vendors.find_all {|vendor| vendor.inventory.has_key?(item)}
   end
+
+  def items_sold
+    @vendors.flat_map {|vendor| vendor.inventory.keys}.uniq
+  end
+
+  def item_stock(item)
+    @vendors.sum {|vendor| vendor.check_stock(item)}
+  end
+
+  def total_inventory
+    items_sold.each_with_object({}) do |item, h|
+      h[item] = {
+        "quantity" => item_stock(item),
+        "vendors" => vendors_that_sell(item)
+      }
+    end
+  end 
 end

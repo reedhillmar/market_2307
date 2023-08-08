@@ -36,5 +36,9 @@ class Market
         "vendors" => vendors_that_sell(item)
       }
     end
-  end 
+  end
+
+  def overstocked_items
+    items_sold.find_all {|item| vendors_that_sell(item).count > 1 && item_stock(item) > 50}
+  end
 end

@@ -24,6 +24,10 @@ describe Market do
       expect(@market.vendors).to be_an Array
       expect(@market.vendors.empty?).to be true
     end
+
+    it "has a date that defaults to the date it is initialized" do
+      expect(@market.date).to eq ("08/08/2023")
+    end
   end
 
   describe "#add_vendor" do

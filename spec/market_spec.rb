@@ -73,5 +73,15 @@ describe Market do
         expect(@market.total_inventory).to eq({@item1 => {"quantity" => 100, "vendors" => [@vendor1, @vendor3]}, @item2 => {"quantity" => 7, "vendors" => [@vendor1]}, @item3 => {"quantity" => 25, "vendors" => [@vendor2]}, @item4 => {"quantity" => 50, "vendors" => [@vendor2]}})
       end
     end
+
+    describe "#overstocked_items" do
+      it "can return items that are sold by more than 1 vendor and the total quantity is greater than 50" do
+        expect(@market.overstocked_items).to eq([@item1])
+
+        @vendor3.stock(@item4, 50)
+
+        expect(@market.overstocked_items).to eq([@item1, @item4])
+      end
+    end
   end
 end

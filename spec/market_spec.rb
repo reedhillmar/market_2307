@@ -56,6 +56,18 @@ describe Market do
       end
     end
 
+    describe "#items_sold" do
+      it "can return all items sold at the market" do
+        expect(@market.items_sold).to eq([@item1, @item2, @item4, @item3])
+      end
+    end
+
+    describe "#item_stock" do
+      it "can return the stock of all items sold at the market" do
+        expect(@market.item_stock(@item1)).to be 100
+      end
+    end
+
     describe "#total_inventory" do
       it "can return the quantity of all items sold at the market" do
         expect(@market.total_inventory).to eq({@item1 => {"quantity" => 100, "vendors" => [@vendor1, @vendor3]}, @item2 => {"quantity" => 7, "vendors" => [@vendor1]}, @item3 => {"quantity" => 25, "vendors" => [@vendor2]}, @item4 => {"quantity" => 50, "vendors" => [@vendor2]}})
